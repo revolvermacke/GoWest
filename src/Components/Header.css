@@ -1,0 +1,21 @@
+._header-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  border-bottom: 0.5px solid #a6a7aab0;
+}
+
+._header {
+  font-size: 80px;
+  color: var(--color-primary);
+}
+
+._header-content {
+  color: var(--color-primary);
+}
+
+._header-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
