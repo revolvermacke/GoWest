@@ -1,9 +1,14 @@
 ._header-container {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  justify-content: center;
+  justify-content: start;
+  gap: 1rem;
   border-bottom: 0.5px solid #a6a7aab0;
+  padding: 0rem 1rem;
+
+  @media (min-width: 768px) {
+    justify-content: center;
+  }
 }
 
 ._header {
