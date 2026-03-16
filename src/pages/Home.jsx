@@ -1,5 +1,6 @@
 import Header from "../Components/Header";
 import HomePageLayout from "../Components/HomePageLayout";
+import TicketInformation from "../Components/TicketInformation";
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       <Header />
       <main className="_container">
         <HomePageLayout />
+        <TicketInformation />
       </main>
     </>
   );

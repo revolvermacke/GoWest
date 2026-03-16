@@ -20,12 +20,12 @@
   background-color: var(--color-light);
   border-radius: 1rem;
   margin: 2rem 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-color);
 }
 
 ._clockIcon {
   padding: 0.8rem;
-  background-color: #6365f163;
+  background-color: var(--icon-bg-color);
   border-radius: 1rem;
 }
 
