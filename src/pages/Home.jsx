@@ -8,7 +8,6 @@ const Home = () => {
       <main className="_container">
         <HomePageLayout />
         <TicketInformation />
-        <Footer />
       </main>
     </>
   );
