@@ -1,14 +1,12 @@
 import Header from "../Components/Header";
+import HomePageLayout from "../Components/HomePageLayout";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <main>
-        <div>
-          <h2>Buy tickets</h2>
-          <p>Choose your ticket type below</p>
-        </div>
+      <main className="_container">
+        <HomePageLayout />
       </main>
     </>
   );
