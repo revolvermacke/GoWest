@@ -14,6 +14,8 @@
 
   --icon-bg-color: #6365f163;
 
+  --btn-hover-bg: #646cffdc;
+  
   --shadow-color: 0 4px 12px rgba(0, 0, 0, 0.08);
 
   font-synthesis: none;
@@ -64,7 +66,7 @@ button {
   transition: background-color 0.25s;
 }
 button:hover {
-  background-color: #646cffdc;
+  background-color: var(--btn-hover-bg);
 }
 button:focus,
 button:focus-visible {

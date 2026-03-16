@@ -1,4 +1,5 @@
 import "./Header.css";
+import BurgerMenu from "./BurgerMenu";
 
 const Header = () => {
   return (
@@ -10,6 +11,7 @@ const Header = () => {
         <div className="_header-content">
           <h1 className="_header-title">GoWest</h1>
         </div>
+        <BurgerMenu />
       </div>
     </>
   );
