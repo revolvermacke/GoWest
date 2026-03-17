@@ -1,4 +1,5 @@
 import "./Header.css";
+import Logotype from "./Logotype";
 import BurgerMenu from "./BurgerMenu";
 
 const Header = () => {
@@ -6,7 +7,8 @@ const Header = () => {
     <>
       <div className="_header-container">
         <div className="_header">
-          <i class="fa-solid fa-bus"></i>
+          <Logotype />
+          {/* <i class="fa-solid fa-bus"></i> */}
         </div>
         <div className="_header-content">
           <h1 className="_header-title">GoWest</h1>
