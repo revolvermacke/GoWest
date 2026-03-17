@@ -19,7 +19,9 @@ const HomePageLayout = () => {
           </div>
         </div>
         <div className="_buyTicket">
-          <span>10 SEK</span>
+          <span className="_price">
+            10 <span className="_currency">SEK</span>
+          </span>
           <button>Buy Ticket</button>
         </div>
       </div>
@@ -35,7 +37,9 @@ const HomePageLayout = () => {
           </div>
         </div>
         <div className="_buyTicket">
-          <span>10 SEK</span>
+          <span className="_price">
+            10 <span className="_currency">SEK</span>
+          </span>
           <button>Buy Ticket</button>
         </div>
       </div>

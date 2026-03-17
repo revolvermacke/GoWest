@@ -41,6 +41,7 @@
 ._timeTicket {
   display: flex;
   flex-direction: column;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
@@ -55,9 +56,20 @@
   align-items: center;
   justify-content: space-between;
 
-  span {
-    color: var(--color-dark);
-    font-size: 1.5rem;
-    font-weight: 700;
+  button {
+    font-size: 1rem;
+    box-shadow: inset 11px 15px 12px rgba(0, 0, 0, 0.08);
   }
+}
+
+._price {
+  color: var(--color-dark);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+._currency {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 1.2rem;
 }
