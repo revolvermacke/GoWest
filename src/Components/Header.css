@@ -1,15 +1,20 @@
+._header-wrapper {
+  border-bottom: 0.5px solid #a6a7aab0;
+  background-color: var(--color-light);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 ._header-container {
   display: flex;
   align-items: center;
   justify-content: start;
   gap: 1rem;
-  border-bottom: 0.5px solid #a6a7aab0;
   padding: 0rem 1rem;
-
-  @media (min-width: 768px) {
-    justify-content: center;
-    padding: 0 21rem;
-  }
 }
 
 ._header {
