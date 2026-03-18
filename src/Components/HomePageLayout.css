@@ -1,4 +1,5 @@
 ._mainContent {
+  margin-top: 1rem;
   margin-bottom: 3rem;
   h2 {
     color: var(--color-dark);
@@ -11,6 +12,10 @@
     color: var(--color-secondary);
     font-weight: 600;
     font-size: 1.2rem;
+    margin-top: 0;
+  }
+
+  @meida (min-width: 768px) {
     margin-top: 0;
   }
 }
