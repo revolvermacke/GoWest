@@ -7,6 +7,7 @@
   background-color: var(--color-light);
   border-radius: 1rem;
   box-shadow: var(--shadow-color);
+  margin-bottom: 1rem;
 }
 
 ._helpCardIcon {
@@ -30,6 +31,14 @@
     margin: 0;
     color: var(--color-secondary);
   }
+}
+
+.lastCard {
+  margin-top: 3rem;
+}
+
+.lastIcon {
+  background-color: #fef3c7; /* annan färg */
 }
 
 ._helpTop {

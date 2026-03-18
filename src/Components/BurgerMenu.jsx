@@ -30,28 +30,28 @@ const BurgerMenu = () => {
               className="_menu-item"
               onClick={() => go("/tickets")}
             >
-              Mina biljetter
+              My tickets
             </button>
 
             <button
               className="_menu-item"
               onClick={() => go("/")}
             >
-              Köp biljett
+              Buy ticket
             </button>
 
             <button
               className="_menu-item"
               onClick={() => go("/help")}
             >
-              Hjälp
+              Help
             </button>
 
             <button
               className="_menu-close"
               onClick={() => setOpen(false)}
             >
-              Stäng
+              Close
             </button>
 
           </div>

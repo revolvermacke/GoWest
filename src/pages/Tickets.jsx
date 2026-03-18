@@ -1,11 +1,18 @@
-import React from 'react'
+import QrTicket from "../Components/QrTicket";
 
-const Tickets = () => {
+const YourTicket = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <div className="_container">
+      <div className="_ticketTop">
+        <h3>My tickets</h3>
+        <p>You have no active tickets. Buy a ticket to get started!</p>
+      </div>
 
-export default Tickets
+      <div className="_qrWrapper">
+        <QrTicket />
+      </div>
+    </div>
+  );
+};
+
+export default YourTicket;
