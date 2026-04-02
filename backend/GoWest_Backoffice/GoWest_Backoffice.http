@@ -1,0 +1,6 @@
+@GoWest_Backoffice_HostAddress = http://localhost:5225
+
+GET {{GoWest_Backoffice_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
