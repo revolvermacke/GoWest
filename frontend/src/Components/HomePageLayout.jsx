@@ -32,13 +32,13 @@ const HomePageLayout = () => {
             <i class="fa-regular fa-clock"></i>
           </div>
           <div className="_timeTicket">
-            <span>30 Minutes</span>
+            <span>60 Minutes</span>
             <span className="_ticketType">Overall ticket</span>
           </div>
         </div>
         <div className="_buyTicket">
           <span className="_price">
-            10 <span className="_currency">SEK</span>
+            20 <span className="_currency">SEK</span>
           </span>
           <button>Buy Ticket</button>
         </div>

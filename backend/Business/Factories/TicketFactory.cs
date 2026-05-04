@@ -1,5 +1,6 @@
 ﻿using Business.Models;
 using Data.Entities;
+using Business.Constants;
 
 namespace Business.Factories;
 
@@ -11,8 +12,8 @@ public static class TicketFactory
 
         var (duration, price) = type switch
         {
-            "30min" => (TimeSpan.FromMinutes(30), 10m),
-            "60min" => (TimeSpan.FromMinutes(60), 20m),
+            TicketTypes.ThirtyMinutes => (TimeSpan.FromMinutes(30), 10m),
+            TicketTypes.SixtyMinutes => (TimeSpan.FromMinutes(60), 20m),
             _ => throw new ArgumentException("Invalid ticket type")
         };
 
