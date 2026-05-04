@@ -8,4 +8,6 @@ public class TicketModel
     public string Type { get; set; } = null!;
     public decimal Price { get; set; }
     public string Status { get; set; } = "active";
+
+    public string? QrCodeBase64 { get; set; }
 }

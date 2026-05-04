@@ -5,9 +5,11 @@ using System.Diagnostics;
 
 namespace Business.Services;
 
-public class TicketService(ITicketRepository ticketRepository) : ITicketService
+public class TicketService(ITicketRepository ticketRepository, QrCodeService qrCodeService, TokenService tokenService) : ITicketService
 {
     private readonly ITicketRepository _ticketRepository = ticketRepository;
+    private readonly QrCodeService _qrCodeService = qrCodeService;
+    private readonly TokenService _tokenService = tokenService;
 
     public async Task<ResponseResult<TicketModel>> CreateTicketAsync(string type)
     {
@@ -17,13 +19,17 @@ public class TicketService(ITicketRepository ticketRepository) : ITicketService
         try
         {
             var ticket = TicketFactory.Create(type);
+
             await _ticketRepository.AddAsync(ticket);
 
             var model = TicketFactory.ToModel(ticket);
 
+            // Generate QR code for the ticket
+            ApplyQrCode(model);
+
             return ResponseResult<TicketModel>.Ok(model);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
             return ResponseResult<TicketModel>.Error("Failed to create ticket.");
@@ -38,10 +44,11 @@ public class TicketService(ITicketRepository ticketRepository) : ITicketService
         {
             var tickets = await _ticketRepository.GetAllAsync();
 
-            if(tickets == null || !tickets.Any())
-                return ResponseResult<IEnumerable<TicketModel>>.NotFound("No tickets found");
-
             var model = tickets.Select(TicketFactory.ToModel).ToList();
+
+            // Generate QR code for each ticket
+            foreach (var ticket in model)
+                ApplyQrCode(ticket);
 
             return ResponseResult<IEnumerable<TicketModel>>.Ok(model);
         }
@@ -63,6 +70,9 @@ public class TicketService(ITicketRepository ticketRepository) : ITicketService
 
             var model = TicketFactory.ToModel(ticket);
 
+            // Generate QR code for the ticket
+            ApplyQrCode(model);
+
             return ResponseResult<TicketModel>.Ok(model);
         }
         catch (Exception ex)
@@ -72,4 +82,9 @@ public class TicketService(ITicketRepository ticketRepository) : ITicketService
         }
     }
 
+    private void ApplyQrCode(TicketModel ticket)
+    {
+        var payload = _tokenService.GenerateQrPayload(ticket);
+        ticket.QrCodeBase64 = _qrCodeService.GenerateQrCodeBase64(payload);
+    }
 }
