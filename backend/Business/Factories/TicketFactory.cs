@@ -30,6 +30,12 @@ public static class TicketFactory
 
     public static TicketModel ToModel(TicketEntity entity)
     {
+        var status = entity.Status switch
+        {
+            "active" when DateTime.UtcNow >= entity.ValidUntil => "expired",
+            _ => entity.Status
+        };
+
         return new TicketModel
         {
             Id = entity.Id,
@@ -37,7 +43,7 @@ public static class TicketFactory
             Price = entity.Price,
             ValidFrom = entity.ValidFrom,
             ValidUntil = entity.ValidUntil,
-            Status = entity.Status,
+            Status = status
         };
     }
 }

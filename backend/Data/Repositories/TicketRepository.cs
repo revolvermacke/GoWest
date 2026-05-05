@@ -25,4 +25,10 @@ public class TicketRepository(AppDbContext context) : ITicketRepository
     {
         return await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
     }
+
+    public async Task UpdateAsync(TicketEntity ticket)
+    {
+        _context.Update(ticket);
+        await _context.SaveChangesAsync();
+    }
 }
