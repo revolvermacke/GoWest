@@ -1,6 +1,6 @@
 import "./HomePageLayout.css";
 import { useTickets } from "../Hooks/useTickets";
-import qrticket from "../Components/QrTicket";
+import QrTicket from "../Components/QrTicket";
 
 const HomePageLayout = () => {
   const { tickets, buyTicket } = useTickets();
@@ -47,8 +47,6 @@ const HomePageLayout = () => {
           <button onClick={() => buyTicket("60min")}>Buy Ticket</button>
         </div>
       </div>
-
-      {tickets && <QrTicket ticket={tickets} />}
     </>
   );
 };

@@ -1,62 +1,59 @@
 import { useState, useEffect } from "react";
 import { createTicket } from "../api/ticketApi";
 
-
-
 export function useTickets() {
-    const [tickets, setTickets] = useState(null);
+    const [tickets, setTickets] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-            const saved = localStorage.getItem("ticket");
+        const saved = localStorage.getItem("tickets");
+        if (!saved) return;
 
-            if (!saved) return;
+        const parsed = JSON.parse(saved);
+        const now = new Date();
 
-            const parsed = JSON.parse(saved);
+        const validTickets = parsed.filter(t => new Date(t.validUntil) > now);
 
-            const now = new Date();
-            const validUntil = new Date(parsed.validUntil);
+        setTickets(validTickets);
+        localStorage.setItem("tickets", JSON.stringify(validTickets));
 
-            // if expired → remove immediately
-            if (validUntil <= now) {
-                localStorage.removeItem("ticket");
-                return;
-            }
+        const timers = validTickets.map(ticket => {
+            const timeout = new Date(ticket.validUntil) - now;
 
-            // if not expired → set timer
-            setTickets(parsed);
-
-            const timeout = validUntil - now;
-
-            const timer = setTimeout(() => {
-                setTickets(null);
-                localStorage.removeItem("ticket");
+            return setTimeout(() => {
+                setTickets(prev => {
+                    const updated = prev.filter(t => t.id !== ticket.id);
+                    localStorage.setItem("tickets", JSON.stringify(updated));
+                    return updated;
+                });
             }, timeout);
+        });
 
-            return () => clearTimeout(timer);
-
-        }, []);
+        return () => timers.forEach(clearTimeout);
+    }, []);
 
     async function buyTicket(type) {
         setLoading(true);
         try {
             const data = await createTicket(type);
-            setTickets(data);
 
-            localStorage.setItem("ticket", JSON.stringify(data));
-        }
-        catch (error) {
+            setTickets(prev => {
+                const updated = [...prev, data];
+                localStorage.setItem("tickets", JSON.stringify(updated));
+                return updated;
+            });
+
+        } catch (error) {
             console.error('Failed to buy ticket:', error);
-
         } finally {
             setLoading(false);
         }
     }
 
-    function clearTicket() {
-        setTickets(null);
-        localStorage.removeItem("ticket");
+    function clearTickets() {
+        setTickets([]);
+        localStorage.removeItem("tickets");
     }
 
-    return { tickets, loading, buyTicket, clearTicket };
+    return { tickets, loading, buyTicket, clearTickets };
 }

@@ -47,7 +47,8 @@ const QrTicket = ({ ticket }) => {
       </div>
 
       <div className="_qrTimer">
-        <p>Time left: {timeLeft}</p>
+        <p>Time left</p>
+        <span>{timeLeft}</span>
       </div>
     </div>
   );
