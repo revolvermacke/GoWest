@@ -1,4 +1,5 @@
-﻿using Business.Factories;
+﻿using Business.Constants;
+using Business.Factories;
 using Business.Interfaces;
 using Business.Models;
 using System.Diagnostics;
@@ -79,6 +80,36 @@ public class TicketService(ITicketRepository ticketRepository, QrCodeService qrC
         {
             Debug.WriteLine(ex.Message);
             return ResponseResult<TicketModel>.Error("Failed to get ticket.");
+        }
+    }
+
+    public async Task<ResponseResult<TicketModel>> UseTicketAsync(Guid id)
+    {
+        try
+        {
+            var ticket = await _ticketRepository.GetByIdAsync(id);
+
+            if (ticket == null)
+                return ResponseResult<TicketModel>.NotFound("Ticket not found");
+
+            if (ticket.Status != TicketStatus.Active)
+                return ResponseResult<TicketModel>.BadRequest("Ticket not valid");
+
+            if (ticket.ValidUntil < DateTime.UtcNow)
+                return ResponseResult<TicketModel>.BadRequest("Ticket expired");
+
+            ticket.Status = TicketStatus.Used;
+
+            await _ticketRepository.UpdateAsync(ticket);
+
+            var model = TicketFactory.ToModel(ticket);
+
+            return ResponseResult<TicketModel>.Ok(model);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return ResponseResult<TicketModel>.Error("Failed to use ticket.");
         }
     }
 

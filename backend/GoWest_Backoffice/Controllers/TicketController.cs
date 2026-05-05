@@ -15,6 +15,8 @@ public class TicketController(ITicketService ticketService) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateTicket([FromBody] CreateTicketDto dto)
     {
+        if (dto == null)
+            return BadRequest("Request body is required");
 
         if (string.IsNullOrWhiteSpace(dto.Type))
             return BadRequest("Type is required");
@@ -40,6 +42,13 @@ public class TicketController(ITicketService ticketService) : ControllerBase
     public async Task<IActionResult> GetTicketById(Guid id)
     {
         var result = await _ticketService.GetTicketByIdAsync(id);
+        return result.ToActionResult();
+    }
+
+    [HttpPost("{id}/use")]
+    public async Task<IActionResult> UseTicket(Guid id)
+    {
+        var result = await _ticketService.UseTicketAsync(id);
         return result.ToActionResult();
     }
 }
