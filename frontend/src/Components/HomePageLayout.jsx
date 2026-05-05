@@ -1,6 +1,10 @@
 import "./HomePageLayout.css";
+import { useTickets } from "../Hooks/useTickets";
+import qrticket from "../Components/QrTicket";
 
 const HomePageLayout = () => {
+  const { tickets, buyTicket } = useTickets();
+
   return (
     <>
       <div className="_mainContent">
@@ -22,7 +26,7 @@ const HomePageLayout = () => {
           <span className="_price">
             10 <span className="_currency">SEK</span>
           </span>
-          <button>Buy Ticket</button>
+          <button onClick={() => buyTicket("30min")}>Buy Ticket</button>
         </div>
       </div>
 
@@ -40,9 +44,11 @@ const HomePageLayout = () => {
           <span className="_price">
             20 <span className="_currency">SEK</span>
           </span>
-          <button>Buy Ticket</button>
+          <button onClick={() => buyTicket("60min")}>Buy Ticket</button>
         </div>
       </div>
+
+      {tickets && <QrTicket ticket={tickets} />}
     </>
   );
 };
