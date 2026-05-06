@@ -3,6 +3,9 @@ using Business.Services;
 using Data.Context;
 using Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +16,26 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // DI
 builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 builder.Services.AddScoped<ITicketService, TicketService>();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 builder.Services.AddScoped<QrCodeService>();
 builder.Services.AddScoped<TokenService>();
+
+// Auth
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
+            )
+        };
+    });
 
 // CORS
 builder.Services.AddCors(options =>
@@ -44,6 +65,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("DevCors");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
