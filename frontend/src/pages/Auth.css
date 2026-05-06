@@ -1,0 +1,106 @@
+._authWrapper {
+  margin-top: 1rem;
+}
+
+._authHeader {
+  margin-bottom: 2rem;
+}
+
+._authHeader h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0;
+  margin-top: 1rem;
+}
+
+._authHeader p {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+._authCard {
+  padding: 2rem;
+  background-color: var(--color-light);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-color);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+._inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+._inputGroup label {
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+._inputGroup input {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #e3e3e3;
+  background-color: #fff;
+
+  font-size: 1rem;
+  color: #000; /* svart text */
+
+  outline: none;
+  transition: 0.2s ease;
+}
+
+._inputGroup input::placeholder {
+  color: #777; /* placeholder syns tydligt */
+}
+
+._inputGroup input:focus {
+  border-color: var(--color-primary);
+}
+
+._authButton {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: inset 11px 15px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+._authButton:hover {
+  opacity: 0.9;
+}
+
+._authFooter {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+}
+
+._authFooter a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+._authError {
+  color: #d32f2f; /* tydligt rött felmeddelande */
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+}

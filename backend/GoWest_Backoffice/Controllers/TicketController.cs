@@ -2,12 +2,14 @@
 using Business.Interfaces;
 using GoWest_Backoffice.Dtos;
 using GoWest_Backoffice.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoWest_Backoffice.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class TicketController(ITicketService ticketService) : ControllerBase
 {
     private readonly ITicketService _ticketService = ticketService;

@@ -11,4 +11,6 @@ public class AppDbContext : DbContext
 
     public DbSet<TicketEntity> Tickets { get; set; } = null!;
 
+    public DbSet<UserEntity> Users { get; set; } = null!;
+
 }
