@@ -50,14 +50,14 @@
   background-color: #fff;
 
   font-size: 1rem;
-  color: #000; /* svart text */
+  color: #000;
 
   outline: none;
   transition: 0.2s ease;
 }
 
 ._inputGroup input::placeholder {
-  color: #777; /* placeholder syns tydligt */
+  color: #777;
 }
 
 ._inputGroup input:focus {
@@ -99,7 +99,7 @@
 }
 
 ._authError {
-  color: #d32f2f; /* tydligt rött felmeddelande */
+  color: #d32f2f;
   font-size: 0.95rem;
   font-weight: 600;
   margin: 0;
