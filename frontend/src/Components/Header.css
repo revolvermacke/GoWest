@@ -12,14 +12,15 @@
 ._header-container {
   display: flex;
   align-items: center;
-  justify-content: start;
-  gap: 1rem;
-  padding: 0rem 1rem;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 ._header {
-  font-size: 80px;
+  font-size: 40px;
   color: var(--color-primary);
+  display: flex;
+  align-items: center;
 }
 
 ._header-content {
@@ -29,4 +30,25 @@
 ._header-title {
   font-size: 2rem;
   font-weight: bold;
+}
+
+._header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+._header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+._userClaim {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
