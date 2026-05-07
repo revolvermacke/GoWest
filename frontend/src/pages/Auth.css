@@ -1,9 +1,13 @@
 ._authWrapper {
   margin-top: 1rem;
+  padding: 2rem;
 }
 
 ._authHeader {
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ._authHeader h2 {

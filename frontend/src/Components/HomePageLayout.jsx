@@ -1,9 +1,16 @@
 import "./HomePageLayout.css";
 import { useTickets } from "../Hooks/useTickets";
 import QrTicket from "../Components/QrTicket";
+import { useNavigate } from "react-router-dom";
 
 const HomePageLayout = () => {
   const { tickets, buyTicket } = useTickets();
+  const navigate = useNavigate();
+
+  const handleBuyTicket = async type => {
+    await buyTicket(type);
+    navigate("/tickets");
+  }
 
   return (
     <>
@@ -15,7 +22,7 @@ const HomePageLayout = () => {
       <div className="_ticketCard">
         <div className="_ticketInfo">
           <div className="_clockIcon">
-            <i class="fa-regular fa-clock"></i>
+            <i className="fa-regular fa-clock"></i>
           </div>
           <div className="_timeTicket">
             <span>30 Minutes</span>
@@ -26,14 +33,14 @@ const HomePageLayout = () => {
           <span className="_price">
             10 <span className="_currency">SEK</span>
           </span>
-          <button onClick={() => buyTicket("30min")}>Buy Ticket</button>
+          <button onClick={() => handleBuyTicket("30min")}>Buy Ticket</button>
         </div>
       </div>
 
       <div className="_ticketCard">
         <div className="_ticketInfo">
           <div className="_clockIcon">
-            <i class="fa-regular fa-clock"></i>
+            <i className="fa-regular fa-clock"></i>
           </div>
           <div className="_timeTicket">
             <span>60 Minutes</span>
@@ -44,7 +51,7 @@ const HomePageLayout = () => {
           <span className="_price">
             20 <span className="_currency">SEK</span>
           </span>
-          <button onClick={() => buyTicket("60min")}>Buy Ticket</button>
+          <button onClick={() => handleBuyTicket("60min")}>Buy Ticket</button>
         </div>
       </div>
     </>
