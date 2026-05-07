@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./BurgerMenu.css";
+import { logout } from "../api/authApi";
 
 const BurgerMenu = () => {
 
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  const signout = () => {
+    logout();
+    setOpen(false);
+  }
 
   const go = (path) => {
     navigate(path);
@@ -45,6 +51,15 @@ const BurgerMenu = () => {
               onClick={() => go("/help")}
             >
               Help
+            </button>
+
+            <button
+              className="_menu-close"
+              onClick={() => {
+                signout();
+              }}
+            >
+              Sign out
             </button>
 
             <button

@@ -27,7 +27,7 @@
 
     background: var(--color-light);
     border-radius: 1rem;
-    box-shadow: 0px 2px 11px 0px rgba(255, 230, 0, 0.459);
+    box-shadow: 0px 2px 11px 0px var(--color-primary);
     margin: 2rem 0;
 }
 
