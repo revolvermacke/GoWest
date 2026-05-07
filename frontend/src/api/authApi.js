@@ -13,3 +13,8 @@ export function register(email, password) {
         body: JSON.stringify({ email, password }),
     });
 }
+
+export function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+}
