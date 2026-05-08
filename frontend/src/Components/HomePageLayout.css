@@ -16,7 +16,7 @@
     margin-top: 0;
   }
 
-  @meida (min-width: 768px) {
+  @media (min-width: 768px) {
     margin-top: 0;
   }
 }
