@@ -16,7 +16,7 @@
     margin-top: 0;
   }
 
-  @meida (min-width: 768px) {
+  @media (min-width: 768px) {
     margin-top: 0;
   }
 }
@@ -78,4 +78,62 @@
   color: var(--color-secondary);
   font-weight: 600;
   font-size: 1.2rem;
+}
+
+._modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+._modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+._modalButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+._modalButtons button {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+._modal h3 {
+  color: var(--color-primary);
+}
+
+._modal p {
+  color: var(--color-secondary);
+  margin-top: 0.5rem;
+}
+
+._modalButtons button:first-child {
+  background: #28a745;
+  color: white;
+}
+
+._modalButtons button:last-child {
+  background: #dc3545;
+  color: white;
 }
