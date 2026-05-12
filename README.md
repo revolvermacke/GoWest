@@ -17,4 +17,4 @@ If you are developing a production application, we recommend using TypeScript wi
 
 # GoWest
 
-Simple ticket application for public transportation.
+Simple ticket application / prototype for public transportation, with cheaper alternatives than the ordinary application that already exists.
