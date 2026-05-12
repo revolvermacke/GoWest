@@ -85,17 +85,17 @@ const HomePageLayout = () => {
       {showModal && (
         <div className="_modalOverlay">
           <div className="_modal">
-            <h3>Bekräfta köp</h3>
+            <h3>Confirm purchase</h3>
 
-            <p>Är du säker på att du vill slutföra bokningen?</p>
+            <p>Are you sure you want to complete the booking?</p>
 
             <div className="_modalButtons">
               <button onClick={confirmPurchase}>
-                Ja, slutför
+                Yes, complete
               </button>
 
               <button onClick={cancelPurchase}>
-                Avbryt
+                Cancel
               </button>
             </div>
           </div>
